@@ -1,65 +1,63 @@
-Program 1: Write a Python program to swap two variables using a temporary variable.
-Program 2: Write a program that takes a user input string and returns the number of vowels in it.
-Program 3: Write a program to reverse a string without using built-in functions.
-Program 4: Concatenate two strings using variables and print the result.
-Program 5: Write a program that checks whether a substring exists in a given string.
-Program 6: Write a program to find the maximum and minimum elements in a list.
-Program 7: Write a program to remove duplicates from a list.
-Program 8: Create a tuple of 5 numbers. Print the sum and average of the numbers.
-Program 9: Write a program to find the second largest number in a list.
-Program 10: Write a Python function to count how many times an element appears in a list.
-Program 11: Write a program to find the union and intersection of two sets.
-Program 12: Create a dictionary with 5 key-value pairs and print all keys and values.
-Program 13: Write a program to count the frequency of characters in a string using a dictionary.
-Program 14: Write a program to print all prime numbers between 1 and 50.
-Program 15: Write a program to take user input and generate the multiplication table of the given number using a for loop.
-Program 16: Write a program to print Fibonacci series up to n terms.
-Program 17: Create a Calculator class with methods add, subtract, multiply, divide.
-Program 18: Implement a Vehicle → Car ElectricCar hierarchy and demonstrate multilevel inheritance.
-Program 19: Create a Shape base class with a method area(). Derive Rectangle and Circle classes overriding area().
-Program 20: Write a program to read a text file and count words, lines, and characters.
-Program 21: Demonstrate use of read(), readline(), readlines(), write(), and writelines().
-Program 22: Print current date, time, and day of the week.
-Program 23: Write a program to calculate age from a given date of birth.
-Program 24: Write a program to handle division by zero exception.
-Program 25: Create a custom exception class NegativeValueError and raise it when negative input is given.
-Program 26: Demonstrate use of try-except-else-finally.
-Program 27: Implementation of MySQL connection using Python.
-Program 28: Implementation of SqLite3 connection using Python.
-Program 29: Write a program to implement CRUD operations using Python.
-Program 30: Create a Login form using CGI and display the input on a different page.
-Program 31: Create a registration form for MCA admission and display the inserted data on the web page.
-Program 32: Create a MySQL database and perform INSERT, UPDATE, DESTROY, and SELECT (display) operations using the CGI interface.
-Program 33: Create a numpy array filled with all ones by defining its shape.
-Program 34: How do you remove rows from a Numpy array that contains non-numeric values?
-Program 35: Remove single-dimensional entries from the shape of an array.
-Program 36: How do you check whether specified values are present in the NumPy array?
-Program 37: Write a NumPy program to sort a given array of shape 2 along the first axis, last axis, and flattened array.
-Program 38: Write a NumPy program to create a structured array from a given student name, height, class, and data type. Now sort by class, then height if the classes are equal.
-Program 39: Write a NumPy program to sort a given complex array using the real part first, then the imaginary part.
-Program 40: Write a NumPy program to sort a given array by the nth column.
-Program 41: Calculate the sum of the diagonal elements of a NumPy array.
-Program 42: Write a program for Matrix Multiplication in NumPy.
-Program 43: Multiply matrices of complex numbers using NumPy in Python.
-Program 44: Compute the covariance matrix of two given NumPy arrays.
-Program 45: Convert covariance matrix to correlation matrix using Python.
-Program 46: Write a NumPy program to compute the histogram of nums against the bins.
-Program 47: Write a NumPy program to compute the cross-correlation of two given arrays.
-Program 48: Write a NumPy program to compute the mean, standard deviation, and variance of a given array along the second axis.
-Program 49: Visualize the following using the given dataset- alphabet_stock_data.csv
-	a. Create a line plot of the historical stock prices of Alphabet Inc. between two specific dates.
-	b. Create a bar plot of the trading volume of Alphabet Inc. stock between two specific dates.
-	c. Create a stacked histogram plot with more bins of opening, closing, high, and low stock prices of Alphabet Inc. between two specific dates.
-	d. Create a scatter plot of the trading volume/stock prices of Alphabet Inc. stock between two specific dates.
-Program 50: Handle the given datasets with adequate preprocessing steps mentioned and visualize the dataset with appropriate graphs.
-	a. Handle Missing Data Values
-	b. Encode the categorical data
-	c. Scale your features
-	d. Normalize the data (if necessary)
-Download the Datasets: Titanic Dataset, Diabetes Dataset, Breast Cancer Wisconsin (Diagnostic) Dataset from online repositories.
-Program 51: Evaluate the dataset (User_Data.csv) and predict whether a user will purchase the company's product or not.
-	a. Compare the performance of any 3 classification models.
-Program 52: A Comparative Study of Classification Algorithms on Real-World Data.
+1. Swap two variables (temp variable).
+2. Count vowels in a string.
+3. Reverse a string (no built-in functions).
+4. Concatenate two strings.
+5. Check if substring exists.
+6. Find min/max in a list.
+7. Remove duplicates from a list.
+8. Calculate tuple sum and average.
+9. Find the second largest number in a list.
+10. Count element frequency in a list.
+11. Find set union and intersection.
+12. Print dictionary keys and values.
+13. Count character frequency in a string (using a dictionary).
+14. Print prime numbers (1-50).
+15. Generate a multiplication table from user input.
+16. Print Fibonacci series up to n terms.
+17. Create a Calculator class (add, subtract, multiply, divide).
+18. Demonstrate multilevel inheritance (e.g., Vehicle > Car > ElectricCar).
+19. Implement polymorphism (e.g., Shape > Rectangle/Circle area).
+20. Count words, lines, and characters in a file.
+21. Demonstrate file I/O methods (read, readline, write, etc.).
+22. Print current date, time, and day.
+23. Calculate age from date of birth.
+24. Handle DivisionByZero exception.
+25. Create and raise a custom exception.
+26. Use a try-except-else-finally block.
+27. Connect to MySQL.
+The list is now numerically labeled for better organization and quick reference. Let me know if
+you need further assistance with any item from the list.
+28. Connect to SQLite3.
+29. Implement database CRUD operations.
+30. Create a CGI login form.
+31. Create a CGI registration form.
+32. Perform MySQL CRUD operations using CGI.
+33. NumPy: Create an array of ones.
+34. NumPy: Remove rows with non-numeric values.
+35. NumPy: Remove single-dimensional entries (squeeze).
+36. NumPy: Check if values exist in an array.
+37. NumPy: Sort an array (by axis and flat).
+38. NumPy: Create and sort a structured array (e.g., by class, then height).
+39. NumPy: Sort a complex array (by real, then imaginary part).
+40. NumPy: Sort an array by the nth column.
+41. NumPy: Calculate the sum of diagonal elements (trace).
+42. NumPy: Matrix multiplication.
+43. NumPy: Multiply complex matrices.
+44. NumPy: Compute covariance matrix.
+45. NumPy: Convert covariance to correlation matrix.
+46. NumPy: Compute a histogram.
+47. NumPy: Compute cross-correlation.
+48. NumPy: Calculate mean, std, and variance along an axis.
+49. Data Viz: Line plot of stock prices.
+50. Data Viz: Bar plot of trading volume.
+51. Data Viz: Stacked histogram of stock prices.
+52. Data Viz: Scatter plot of volume vs. price.
+53. Data Preprocessing: Handle missing values.
+54. Data Preprocessing: Encode categorical data.
+55. Data Preprocessing: Scale features.
+56. Data Preprocessing: Normalize data.
+57. Machine Learning: Compare 3 classification models to predict user purchases.
+58. Machine Learning: Comparative study of classification algorithms.
 
 Program 1:Write a Python program to swap two variables using a temporary variable.
 a = 10
