@@ -1745,3 +1745,72 @@ plt.show()
 
 sns.heatmap(df.corr(),annot=True)
 plt.show()
+
+53 alphabet stock
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+
+try:
+    df=pd.read_csv('Alphabet Stock.csv')
+except:
+    print("error")
+print(df.head())
+print(df.info())
+
+df['Date']=pd.to_datetime(df['Date'])
+
+print(df.isnull().sum())
+
+start_date = "2010-01-01"
+end_date = "2015-01-01"
+df_range = df[(df['Date'] >= start_date) & (df['Date'] <= end_date)]
+
+sns.lineplot(x='Date',y='Close',data=df_range)
+plt.show()
+
+sns.barplot(x='Date',y='Volume',data=df_range)
+plt.show()
+
+sns.scatterplot(x='Date',y='Volume',data=df_range)
+plt.show()
+
+# df_range[['Open','Close','High','Low']].plot(kind='hist',bins=40,stacked=True)
+# plt.show()
+
+df['PriceUp']=(df['Close']>df['Open']).astype(int)
+X = df[['Open','High','Low','Close','Volume']]
+y = df['PriceUp']
+
+x_train,x_test,y_train,y_test=train_test_split(X,y,random_state=42,test_size=0.25)
+
+scaler=StandardScaler()
+x_train_scaled=scaler.fit_transform(x_train)
+x_test_scaled=scaler.fit_transform(x_test)
+
+model={
+    "Logistic Regression": LogisticRegression(),
+    "KNN": KNeighborsClassifier(),
+    "Decision Tree": DecisionTreeClassifier(),
+    "Random Forest": RandomForestClassifier(),
+    "SVM": SVC()
+}
+
+for name,model in model.items():
+    model.fit(x_train_scaled,y_train)
+    y_pred=model.predict(x_test_scaled)
+    print(f"accuracy_score={accuracy_score(y_test,y_pred)}")
+    print(f"confusion_matrix={confusion_matrix(y_test,y_pred)}")
+    print(f"classification_report={classification_report(y_test,y_pred)}")
+
+
