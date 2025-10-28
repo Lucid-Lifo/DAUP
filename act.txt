@@ -46,17 +46,17 @@
 46. NumPy: Compute a histogram.
 47. NumPy: Compute cross-correlation.
 48. NumPy: Calculate mean, std, and variance along an axis.
-49. Data Viz: Line plot of stock prices.
-50. Data Viz: Bar plot of trading volume.
-51. Data Viz: Stacked histogram of stock prices.
-52. Data Viz: Scatter plot of volume vs. price.
-53. Data Preprocessing: Handle missing values.
-54. Data Preprocessing: Encode categorical data.
-55. Data Preprocessing: Scale features.
-56. Data Preprocessing: Normalize data.
-57. Machine Learning: Compare 3 classification models to predict user purchases.
-58. Machine Learning: Comparative study of classification algorithms.
-59. Titanic 
+49. Data Viz: Line plot of stock prices.(alphabet stock)
+. Data Viz: Bar plot of trading volume.
+. Data Viz: Stacked histogram of stock prices.
+. Data Viz: Scatter plot of volume vs. price.
+50. Data Preprocessing: Handle missing values.(titanic,Diabetes,breast)
+. Data Preprocessing: Encode categorical data.
+. Data Preprocessing: Scale features.
+. Data Preprocessing: Normalize data.
+51. Machine Learning: Compare 3 classification models to predict user purchases.(users)
+52. Machine Learning: Comparative study of classification algorithms.(health care stroke)
+53. Titanic 
 
 Program 1:Write a Python program to swap two variables using a temporary variable.
 a = 10
@@ -1663,7 +1663,7 @@ plt.title('Top 20 Feature Importances (Random Forest)')
 plt.savefig('plots/feature_importances_rf.png', bbox_inches='tight')
 plt.show()
 
-program 59 titanic
+program 53 titanic
 
 import pandas as pd
 import numpy as np
