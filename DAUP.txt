@@ -25,8 +25,6 @@
 25. Create and raise a custom exception.
 26. Use a try-except-else-finally block.
 27. Connect to MySQL.
-The list is now numerically labeled for better organization and quick reference. Let me know if
-you need further assistance with any item from the list.
 28. Connect to SQLite3.
 29. Implement database CRUD operations.
 30. Create a CGI login form.
@@ -58,6 +56,7 @@ you need further assistance with any item from the list.
 56. Data Preprocessing: Normalize data.
 57. Machine Learning: Compare 3 classification models to predict user purchases.
 58. Machine Learning: Comparative study of classification algorithms.
+59. Titanic 
 
 Program 1:Write a Python program to swap two variables using a temporary variable.
 a = 10
@@ -500,6 +499,89 @@ delete(2)
 print("\nAfter Delete:")
 read()
 conn.close()
+
+
+or
+
+import sqlite3
+from sqlite3 import Error
+def getconn():
+    conn=sqlite3.connect('student.db')
+    conn.row_factory=sqlite3.Row
+    return conn
+def createtable():
+    conn=getconn()
+    try:
+        conn.execute('''CREATE TABLE IF NOT EXISTS studinfo (id integer PRIMARY KEY AUTOINCREMENT,name TEXT NOT NULL,mark INTEGER)''')
+        conn.commit()
+        print("table created")
+        conn.close()
+    except Error as e:
+        print(e)
+def adddata():
+    name=input("Enter name")
+    mark=int(input("mark:"))
+    conn=getconn()
+    try:
+        conn.execute('INSERT INTO studinfo (name,mark) VALUES(?,?)',(name,mark))
+        conn.commit()
+        print("Data added")
+        conn.close()
+    except Error as e:
+        print(e)
+def viewdata():
+    conn=getconn()
+    try:
+        user=conn.execute('Select * from studinfo').fetchall()
+        for i in user:
+            print(f"ID={i['id']},Name={i['name']},Mark={i['mark']}")
+        conn.close()
+    except Error as e:
+        print(e)
+def update():
+    id=int(input("enter id"))
+    mark=int(input("enter mark"))
+    conn=getconn()
+    try:
+        conn.execute('UPDATE studinfo SET mark=? where id=?',(mark,id))
+        conn.commit()
+        print("Data Updated")
+        conn.close()
+    except Error as e:
+        print(e)
+def deletedata():
+    user_id = input("Enter the ID of the user to delete: ")
+    conn = getconn()
+    conn.execute('DELETE FROM studinfo WHERE id = ?', (user_id,))
+    conn.commit()
+    conn.close()
+    print(f"\nUser with ID {user_id} deleted successfully.")
+def main_menu():
+    createtable()
+    while True:
+        print("\n--- User Management System ---")
+        print("1. Add a new user (Create)")
+        print("2. View all users (Read)")
+        print("3. Update a user (Update)")
+        print("4. Delete a user (Delete)")
+        print("5. Exit")
+        choice = input("Enter your choice (1-5): ")
+
+        if choice == '1':
+            adddata()
+        elif choice == '2':
+            viewdata()
+        elif choice == '3':
+            update()
+        elif choice == '4':
+           deletedata()
+        elif choice == '5':
+            print("Exiting program. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please enter a number between 1 and 5.")
+main_menu()
+
 
 Program 30:Create a Login form using CGI and display the input on a different page
 login_form.py
@@ -1581,3 +1663,85 @@ plt.title('Top 20 Feature Importances (Random Forest)')
 plt.savefig('plots/feature_importances_rf.png', bbox_inches='tight')
 plt.show()
 
+program 59 titanic
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler,LabelEncoder
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score,classification_report,confusion_matrix
+#impoer and read data
+try:
+    df=pd.read_csv("Titanic-Dataset.csv")
+except FileNotFoundError:
+    print("file not found")
+df.head()
+print(df.shape)
+print(df.isnull().sum())
+df.info()
+
+
+#cleaning data
+df=df.drop(columns=['Cabin', 'PassengerId', 'Name', 'Ticket'])
+df['Age']=df['Age'].fillna(df['Age'].median())
+df['Embarked']=df['Embarked'].fillna(df['Embarked'].mode()[0])
+#df.drop_duplicate(inplace=true)
+df = pd.get_dummies(df, drop_first=True)
+
+
+# label=LabelEncoder()
+# df['Sex']=label.fit_transform(df['Sex'])
+x=df.drop(columns=['Survived'])
+y=df['Survived']
+
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.25,random_state=42)
+
+scaler=StandardScaler()
+x_train_scaled=scaler.fit_transform(x_train)
+x_test_scaled=scaler.fit_transform(x_test)
+
+model={"LogisticRegression":LogisticRegression(random_state=42),
+       "DecisionTree":DecisionTreeClassifier(random_state=42),
+       "Random forest":RandomForestClassifier(random_state=42),
+       "KNN":KNeighborsClassifier(n_neighbors=5),
+       "SVM":SVC(probability=True)
+      }
+
+for name,model in model.items():
+    model.fit(x_train_scaled,y_train)
+    y_pred=model.predict(x_test_scaled)
+    accuracy=accuracy_score(y_pred,y_test)
+    print(f"{name}")
+    print(f"Accuracy:{accuracy:.4f}")
+    print("Report")
+    print(classification_report(y_pred,y_test))
+    print("con matrix")
+    print(confusion_matrix(y_pred,y_test))
+
+
+sns.countplot(x=y)
+plt.title("Target Variable Distribution")
+plt.show()
+
+sns.histplot(df['Age'])
+plt.show()
+
+sns.boxplot(y=df['Age'])
+plt.show()
+
+sns.scatterplot(x='Age',y='Fare',data=df)
+plt.show()
+
+sns.lineplot(x=df.index[:50],y=df['Fare'][:50])
+plt.show()
+
+sns.heatmap(df.corr(),annot=True)
+plt.show()
